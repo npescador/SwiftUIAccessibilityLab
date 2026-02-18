@@ -1,6 +1,6 @@
 import Foundation
 
-struct Task: Identifiable, Hashable, Codable {
+struct TaskItem: Identifiable, Hashable, Codable {
     let id: UUID
     var title: String
     var details: String?

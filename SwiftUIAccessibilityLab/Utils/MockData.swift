@@ -27,7 +27,7 @@ enum MockData {
         ),
         Example(
             metadata: ExampleMetadata(
-                title: "Task List",
+                title: "TaskItem List",
                 description: "Lists, swipe actions, complex rows, and search.",
                 difficulty: .intermediate,
                 category: .lists,
@@ -50,7 +50,7 @@ enum MockData {
         ),
         Example(
             metadata: ExampleMetadata(
-                title: "Task Detail",
+                title: "TaskItem Detail",
                 description: "Complex layouts, pickers, and edit mode feedback.",
                 difficulty: .intermediate,
                 category: .forms,
@@ -119,9 +119,9 @@ enum MockData {
         )
     ]
 
-    static let sampleTasks: [Task] = [
-        Task(title: "Buy groceries", details: "Milk, bread, and fruit", priority: .high, dueDate: .now.addingTimeInterval(3600)),
-        Task(title: "Walk the dog", details: "30 minute walk", priority: .medium, dueDate: .now.addingTimeInterval(7200)),
-        Task(title: "Read book", details: "Finish chapter 4", priority: .low, dueDate: nil)
+    static let sampleTasks: [TaskItem] = [
+        TaskItem(title: "Buy groceries", details: "Milk, bread, and fruit", priority: .high, dueDate: .now.addingTimeInterval(3600)),
+        TaskItem(title: "Walk the dog", details: "30 minute walk", priority: .medium, dueDate: .now.addingTimeInterval(7200)),
+        TaskItem(title: "Read book", details: "Finish chapter 4", priority: .low, dueDate: nil)
     ]
 }
