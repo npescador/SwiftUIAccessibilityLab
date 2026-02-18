@@ -33,6 +33,7 @@ struct TaskRow_Accessible: View {
         .accessibilityLabel(labelText)
         .accessibilityValue(task.isComplete ? "Completed" : "Not completed")
         .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("tasklist.row.\(task.id.uuidString)")
         .accessibilityActions {
             Button("Toggle completion", action: onToggle)
             Button("Delete", action: onDelete)

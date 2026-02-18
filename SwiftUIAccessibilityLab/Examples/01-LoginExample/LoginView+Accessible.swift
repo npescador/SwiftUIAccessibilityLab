@@ -19,6 +19,7 @@ struct LoginView_Accessible: View {
             if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage)
                     .foregroundStyle(.red)
+                    .accessibilityIdentifier("login.error.message")
                     .accessibilityLabel("Error: \(errorMessage)")
                     .onAppear {
                         AccessibilityHelpers.announce("Error: \(errorMessage)")
@@ -28,6 +29,7 @@ struct LoginView_Accessible: View {
             Button("Forgot password?") {
             }
             .buttonStyle(.plain)
+            .accessibilityIdentifier("login.forgot.button")
             .accessibilityHint("Opens password recovery")
         }
         .padding()
@@ -39,6 +41,7 @@ struct LoginView_Accessible: View {
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
             .autocorrectionDisabled()
+            .accessibilityIdentifier("login.email.field")
             .accessibilityLabel("Email address")
             .accessibilityHint("Enter your email to log in")
             .accessibilityValue(viewModel.email.isEmpty ? "Empty" : viewModel.email)
@@ -53,6 +56,7 @@ struct LoginView_Accessible: View {
             }
         }
         .textContentType(.password)
+        .accessibilityIdentifier("login.password.field")
         .accessibilityLabel("Password")
         .accessibilityValue(viewModel.showPassword ? "Visible" : "Hidden")
         .accessibilityHint("Enter your password")
@@ -63,6 +67,7 @@ struct LoginView_Accessible: View {
             viewModel.togglePasswordVisibility()
         }
         .buttonStyle(.bordered)
+        .accessibilityIdentifier("login.password.visibility.button")
         .accessibilityHint("Toggles password visibility")
     }
 
@@ -79,6 +84,7 @@ struct LoginView_Accessible: View {
         }
         .buttonStyle(.borderedProminent)
         .disabled(!viewModel.isFormValid || viewModel.isLoading)
+        .accessibilityIdentifier("login.submit.button")
         .accessibilityLabel("Log in")
         .accessibilityHint("Logs you into your account")
         .accessibilityValue(viewModel.isFormValid ? "Ready" : "Missing required fields")

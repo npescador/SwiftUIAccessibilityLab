@@ -12,6 +12,7 @@ struct ContentView: View {
                             NavigationLink(value: example.route) {
                                 ExampleRow(example: example)
                             }
+                            .accessibilityIdentifier("example.link.\(example.route.rawValue)")
                         }
                     } header: {
                         Text(category.rawValue)

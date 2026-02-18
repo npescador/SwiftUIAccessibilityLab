@@ -12,6 +12,7 @@ struct TaskListView_Accessible: View {
 
             if viewModel.isLoading {
                 ProgressView("Loading tasks")
+                    .accessibilityIdentifier("tasklist.loading")
                     .accessibilityLabel("Loading tasks")
             }
 
@@ -21,6 +22,7 @@ struct TaskListView_Accessible: View {
                     systemImage: "checkmark.circle",
                     description: Text("Create a task to get started")
                 )
+                .accessibilityIdentifier("tasklist.empty.state")
                 .accessibilityElement(children: .combine)
                 .accessibilityLabel("No tasks. Create a task to get started.")
             } else {
@@ -41,6 +43,7 @@ struct TaskListView_Accessible: View {
                     }
                 }
                 .listStyle(.plain)
+                .accessibilityIdentifier("tasklist.list")
                 .refreshable {
                     await viewModel.loadTasks()
                 }
@@ -55,6 +58,7 @@ struct TaskListView_Accessible: View {
     private var searchField: some View {
         TextField("Search tasks", text: $viewModel.searchText)
             .textFieldStyle(.roundedBorder)
+            .accessibilityIdentifier("tasklist.search.field")
             .accessibilityLabel("Search tasks")
             .accessibilityValue(viewModel.searchText.isEmpty ? "Empty" : viewModel.searchText)
             .accessibilityHint("Enter text to filter tasks")
@@ -64,6 +68,7 @@ struct TaskListView_Accessible: View {
         HStack(spacing: 8) {
             TextField("New task", text: $newTaskTitle)
                 .textFieldStyle(.roundedBorder)
+                .accessibilityIdentifier("tasklist.newtask.field")
                 .accessibilityLabel("New task")
                 .accessibilityHint("Enter a title for the new task")
 
@@ -73,6 +78,7 @@ struct TaskListView_Accessible: View {
                 }
             }
             .pickerStyle(.menu)
+            .accessibilityIdentifier("tasklist.priority.picker")
             .accessibilityLabel("Priority")
             .accessibilityValue(newTaskPriority.rawValue)
 
@@ -83,6 +89,7 @@ struct TaskListView_Accessible: View {
                 newTaskPriority = .medium
             }
             .buttonStyle(.borderedProminent)
+            .accessibilityIdentifier("tasklist.add.button")
             .accessibilityHint("Adds the new task")
         }
     }

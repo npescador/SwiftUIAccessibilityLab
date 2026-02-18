@@ -22,9 +22,10 @@ final class SwiftUIAccessibilityLabUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        openExample(named: "Login", in: app)
+        openExample(route: "login", title: "Login", in: app)
 
         XCTAssertTrue(app.staticTexts["Welcome back"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.segmentedControls["comparison.toggle"].waitForExistence(timeout: 2))
         XCTAssertTrue(app.segmentedControls.buttons["Accessible"].exists)
         XCTAssertTrue(app.segmentedControls.buttons["Inaccessible"].exists)
 
@@ -32,7 +33,7 @@ final class SwiftUIAccessibilityLabUITests: XCTestCase {
         XCTAssertTrue(app.buttons["Show"].waitForExistence(timeout: 2))
 
         app.segmentedControls.buttons["Accessible"].tap()
-        XCTAssertTrue(app.buttons["Show password"].waitForExistence(timeout: 2))
+        XCTAssertTrue(app.buttons["login.password.visibility.button"].waitForExistence(timeout: 2))
     }
 
     @MainActor
@@ -40,17 +41,29 @@ final class SwiftUIAccessibilityLabUITests: XCTestCase {
         let app = XCUIApplication()
         app.launch()
 
-        let examples = ["Login", "Task List", "Task Detail", "Custom Control", "Settings"]
+        let examples: [(route: String, title: String)] = [
+            ("login", "Login"),
+            ("taskList", "Task List"),
+            ("taskDetail", "Task Detail"),
+            ("customControl", "Custom Control"),
+            ("settings", "Settings")
+        ]
 
-        for title in examples {
-            openExample(named: title, in: app)
-            XCTAssertTrue(app.navigationBars.staticTexts[title].waitForExistence(timeout: 2))
+        for example in examples {
+            openExample(route: example.route, title: example.title, in: app)
+            XCTAssertTrue(app.navigationBars.staticTexts[example.title].waitForExistence(timeout: 2))
             navigateBack(in: app)
         }
     }
 
     @MainActor
-    private func openExample(named title: String, in app: XCUIApplication) {
+    private func openExample(route: String, title: String, in app: XCUIApplication) {
+        let identifiedLink = app.buttons["example.link.\(route)"]
+        if identifiedLink.waitForExistence(timeout: 2) {
+            identifiedLink.tap()
+            return
+        }
+
         let target = app.staticTexts[title]
         if target.waitForExistence(timeout: 2) {
             target.tap()
@@ -59,8 +72,12 @@ final class SwiftUIAccessibilityLabUITests: XCTestCase {
 
         for _ in 0..<6 {
             app.swipeUp()
-            if app.staticTexts[title].exists {
-                app.staticTexts[title].tap()
+            if app.buttons["example.link.\(route)"].exists {
+                app.buttons["example.link.\(route)"].tap()
+                return
+            }
+            if target.exists {
+                target.tap()
                 return
             }
         }

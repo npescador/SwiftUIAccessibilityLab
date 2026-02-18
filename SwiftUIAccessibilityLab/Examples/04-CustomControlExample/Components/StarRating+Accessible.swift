@@ -16,6 +16,7 @@ struct StarRating_Accessible: View {
             }
         }
         .accessibilityElement(children: .ignore)
+        .accessibilityIdentifier("customcontrol.rating")
         .accessibilityLabel("Rating")
         .accessibilityValue("\(rating) out of \(maxRating) stars")
         .accessibilityAdjustableAction { direction in
