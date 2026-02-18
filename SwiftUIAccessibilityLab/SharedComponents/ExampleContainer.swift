@@ -8,17 +8,17 @@ struct ExampleContainer<AccessibleContent: View, InaccessibleContent: View>: Vie
     @State private var variant: ExampleVariant = .accessible
 
     var body: some View {
-        ScrollView {
+        VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: 16) {
                 header
-
                 ComparisonToggle(selection: $variant)
-
                 Divider()
-
-                currentView
             }
-            .padding()
+            .padding(.horizontal)
+            .padding(.top)
+
+            currentView
+                .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
         }
         .navigationTitle(metadata.title)
         .navigationBarTitleDisplayMode(.inline)
