@@ -26,7 +26,7 @@ struct ContentView: View {
                 case .taskList:
                     TaskListExampleContainer()
                 case .taskDetail:
-                    ExamplePlaceholderView(title: "Task Detail")
+                    TaskDetailExampleContainer()
                 case .customControl:
                     ExamplePlaceholderView(title: "Custom Control")
                 case .settings:
