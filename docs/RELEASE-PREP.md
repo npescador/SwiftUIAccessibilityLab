@@ -7,6 +7,7 @@ This runbook prepares and publishes `v0.1.0` once you are ready to push to GitHu
 - Build app in `develop`
 - Run all tests: `Cmd + U`
 - Perform manual VoiceOver pass on all 5 examples
+- Fill in `docs/VOICEOVER-AUDIT-v0.1.0.md`
 - Confirm zero warnings in Xcode
 
 ## 2. Final Documentation Pass
@@ -14,6 +15,7 @@ This runbook prepares and publishes `v0.1.0` once you are ready to push to GitHu
 - Confirm links in `README.md` and `CONTRIBUTING.md`
 - Confirm `docs/IMPLEMENTATION-CHECKLIST.md` launch section
 - Review `docs/RELEASE-NOTES-v0.1.0.md`
+- Attach completed `docs/VOICEOVER-AUDIT-v0.1.0.md` to release notes or PR context
 
 ## 3. Repository Setup (When Creating Remote)
 - Create GitHub repository for `SwiftUIAccessibilityLab`
