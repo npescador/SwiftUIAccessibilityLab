@@ -8,11 +8,13 @@ struct SettingsView_Accessible: View {
         Form {
             Section {
                 Toggle("Enable notifications", isOn: $viewModel.notificationsEnabled)
+                    .accessibilityIdentifier("settings.notifications.toggle")
                     .accessibilityLabel("Enable notifications")
                     .accessibilityValue(viewModel.notificationsEnabled ? "On" : "Off")
                     .accessibilityHint("Double-tap to toggle")
 
                 Toggle("Email notifications", isOn: $viewModel.emailNotifications)
+                    .accessibilityIdentifier("settings.emailnotifications.toggle")
                     .accessibilityLabel("Email notifications")
                     .accessibilityValue(viewModel.emailNotifications ? "On" : "Off")
                     .accessibilityHint("Double-tap to toggle")
@@ -29,11 +31,13 @@ struct SettingsView_Accessible: View {
                         Text(theme.rawValue).tag(theme)
                     }
                 }
+                .accessibilityIdentifier("settings.theme.picker")
                 .accessibilityLabel("Theme")
                 .accessibilityValue(viewModel.theme.rawValue)
                 .accessibilityHint("Double-tap to change")
 
                 Toggle("Share analytics", isOn: $viewModel.shareAnalytics)
+                    .accessibilityIdentifier("settings.analytics.toggle")
                     .accessibilityLabel("Share analytics")
                     .accessibilityValue(viewModel.shareAnalytics ? "On" : "Off")
                     .accessibilityHint("Double-tap to toggle")
@@ -46,11 +50,13 @@ struct SettingsView_Accessible: View {
                 Button("Clear cache") {
                     viewModel.clearCache()
                 }
+                .accessibilityIdentifier("settings.clearcache.button")
                 .accessibilityHint("Clears temporary data")
 
                 Button("Delete account", role: .destructive) {
                     showDeleteConfirmation = true
                 }
+                .accessibilityIdentifier("settings.deleteaccount.button")
                 .accessibilityHint("Warning: This action cannot be undone")
                 .confirmationDialog("Delete Account?", isPresented: $showDeleteConfirmation) {
                     Button("Delete", role: .destructive) {
@@ -66,6 +72,7 @@ struct SettingsView_Accessible: View {
 
             if let statusMessage = viewModel.statusMessage {
                 Text(statusMessage)
+                    .accessibilityIdentifier("settings.status.message")
                     .foregroundStyle(.secondary)
                     .accessibilityLabel(statusMessage)
             }

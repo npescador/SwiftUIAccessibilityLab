@@ -21,6 +21,7 @@ struct CustomControlView_Accessible: View {
                     .font(.headline)
 
                 Slider(value: $viewModel.volume, in: 0...100, step: 5)
+                    .accessibilityIdentifier("customcontrol.volume.slider")
                     .accessibilityLabel("Volume")
                     .accessibilityValue("\(Int(viewModel.volume)) percent")
                     .accessibilityAdjustableAction { direction in
@@ -64,6 +65,7 @@ struct CustomControlView_Accessible: View {
                 viewModel.selectColor(color)
                 AccessibilityHelpers.announce("\(label) selected")
             }
+            .accessibilityIdentifier("customcontrol.color.\(label.lowercased())")
             .accessibilityLabel(label)
             .accessibilityAddTraits(viewModel.selectedColor == color ? .isSelected : [])
             .accessibilityHint("Double-tap to select")

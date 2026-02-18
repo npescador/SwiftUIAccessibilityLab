@@ -8,6 +8,7 @@ struct TaskDetailView_Accessible: View {
             Section {
                 if viewModel.isEditing {
                     TextField("Task title", text: $viewModel.editTitle)
+                        .accessibilityIdentifier("taskdetail.title.field")
                         .accessibilityLabel("Task title")
                         .accessibilityValue(viewModel.editTitle)
                         .onChange(of: viewModel.editTitle) { _, _ in
@@ -15,6 +16,7 @@ struct TaskDetailView_Accessible: View {
                         }
                 } else {
                     Text(viewModel.task.title)
+                        .accessibilityIdentifier("taskdetail.title.text")
                         .accessibilityLabel("Task title: \(viewModel.task.title)")
                 }
             } header: {
@@ -26,6 +28,7 @@ struct TaskDetailView_Accessible: View {
                 if viewModel.isEditing {
                     TextEditor(text: $viewModel.editDetails)
                         .frame(minHeight: 80)
+                        .accessibilityIdentifier("taskdetail.description.editor")
                         .accessibilityLabel("Task description")
                         .accessibilityValue(viewModel.editDetails.isEmpty ? "Empty" : viewModel.editDetails)
                         .onChange(of: viewModel.editDetails) { _, _ in
@@ -48,6 +51,7 @@ struct TaskDetailView_Accessible: View {
                     }
                 }
                 .disabled(!viewModel.isEditing)
+                .accessibilityIdentifier("taskdetail.priority.picker")
                 .accessibilityLabel("Priority")
                 .accessibilityValue(viewModel.editPriority.rawValue)
                 .accessibilityHint("Double-tap to change priority")
@@ -57,6 +61,7 @@ struct TaskDetailView_Accessible: View {
 
                 Toggle("Due date", isOn: $viewModel.hasDueDate)
                     .disabled(!viewModel.isEditing)
+                    .accessibilityIdentifier("taskdetail.duedate.toggle")
                     .accessibilityHint("Toggle to add or remove a due date")
                     .onChange(of: viewModel.hasDueDate) { _, _ in
                         viewModel.updateEditState()
@@ -70,6 +75,7 @@ struct TaskDetailView_Accessible: View {
                     )
                     .labelsHidden()
                     .disabled(!viewModel.isEditing)
+                    .accessibilityIdentifier("taskdetail.duedate.picker")
                     .accessibilityLabel("Due date")
                     .accessibilityValue(viewModel.editDueDate.formatted(date: .long, time: .shortened))
                     .accessibilityHint("Double-tap to change")
@@ -87,6 +93,7 @@ struct TaskDetailView_Accessible: View {
                     get: { viewModel.task.isComplete },
                     set: { _ in viewModel.toggleCompletion() }
                 ))
+                .accessibilityIdentifier("taskdetail.completed.toggle")
                 .accessibilityValue(viewModel.task.isComplete ? "Completed" : "Not completed")
             } header: {
                 Text("Status")
@@ -101,11 +108,13 @@ struct TaskDetailView_Accessible: View {
                         viewModel.saveChanges()
                     }
                     .disabled(!viewModel.hasUnsavedChanges)
+                    .accessibilityIdentifier("taskdetail.save.button")
                     .accessibilityHint("Saves your changes")
                 } else {
                     Button("Edit") {
                         viewModel.startEditing()
                     }
+                    .accessibilityIdentifier("taskdetail.edit.button")
                     .accessibilityHint("Enters edit mode")
                 }
             }
@@ -114,6 +123,7 @@ struct TaskDetailView_Accessible: View {
                     Button("Cancel") {
                         viewModel.cancelEditing()
                     }
+                    .accessibilityIdentifier("taskdetail.cancel.button")
                     .accessibilityHint("Discards your changes")
                 }
             }
