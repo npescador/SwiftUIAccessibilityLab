@@ -14,6 +14,7 @@
 - ✅ MVP examples implemented: `5/5` (Login, Task List, Task Detail, Custom Control, Settings)
 - ✅ Accessible and inaccessible variants integrated in app navigation
 - ✅ Swift Testing ViewModel suites added for all implemented examples
+- ✅ Release prep artifacts drafted (`docs/RELEASE-PREP.md` and `docs/RELEASE-NOTES-v0.1.0.md`)
 - ⚠️ Repository remote URLs are placeholders until the public GitHub repository is created
 
 ---
@@ -371,6 +372,8 @@ If you find this project helpful:
 ## 🗺️ Roadmap
 
 See [ROADMAP.md](docs/ROADMAP.md) for future plans.
+Release preparation checklist: [RELEASE-PREP.md](docs/RELEASE-PREP.md).
+Draft release notes: [RELEASE-NOTES-v0.1.0.md](docs/RELEASE-NOTES-v0.1.0.md).
 
 **Coming Soon:**
 - Code snippet viewer (show implementation inline)
