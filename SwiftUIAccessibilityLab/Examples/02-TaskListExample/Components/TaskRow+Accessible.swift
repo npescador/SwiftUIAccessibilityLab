@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct TaskRow_Accessible: View {
-    let task: Task
+    let task: TaskItem
     let onToggle: () -> Void
     let onDelete: () -> Void
 
@@ -50,7 +50,7 @@ struct TaskRow_Accessible: View {
 
 #Preview {
     TaskRow_Accessible(
-        task: Task(title: "Buy groceries", priority: .high, dueDate: .now),
+        task: TaskItem(title: "Buy groceries", priority: .high, dueDate: .now),
         onToggle: {},
         onDelete: {}
     )
