@@ -30,7 +30,7 @@ struct ContentView: View {
                 case .customControl:
                     CustomControlExampleContainer()
                 case .settings:
-                    ExamplePlaceholderView(title: "Settings")
+                    SettingsExampleContainer()
                 }
             }
         }
