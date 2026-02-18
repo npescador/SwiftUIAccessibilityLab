@@ -272,6 +272,25 @@ SwiftUIAccessibilityLab/
 
 ---
 
+## 📸 Screenshots (Placeholders)
+
+Release screenshot placeholders are tracked in:
+- [docs/screenshots/README.md](docs/screenshots/README.md)
+
+Expected files:
+- `docs/screenshots/login-accessible.png`
+- `docs/screenshots/login-inaccessible.png`
+- `docs/screenshots/tasklist-accessible.png`
+- `docs/screenshots/tasklist-inaccessible.png`
+- `docs/screenshots/taskdetail-accessible.png`
+- `docs/screenshots/taskdetail-inaccessible.png`
+- `docs/screenshots/customcontrol-accessible.png`
+- `docs/screenshots/customcontrol-inaccessible.png`
+- `docs/screenshots/settings-accessible.png`
+- `docs/screenshots/settings-inaccessible.png`
+
+---
+
 ## 🧪 Testing Philosophy
 
 ### Unit Tests
