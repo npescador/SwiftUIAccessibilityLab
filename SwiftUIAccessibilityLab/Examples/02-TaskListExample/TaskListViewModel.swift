@@ -17,7 +17,7 @@ final class TaskListViewModel {
         isLoading = true
         defer { isLoading = false }
 
-        try? await TaskItem.sleep(for: .seconds(1))
+        try? await Task.sleep(for: .seconds(1))
         tasks = MockData.sampleTasks
 
         AccessibilityHelpers.announce("\(tasks.count) tasks loaded")
