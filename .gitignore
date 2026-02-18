@@ -1,0 +1,41 @@
+# Xcode
+xcuserdata/
+*.xcuserstate
+*.xcscmblueprint
+*.xccheckout
+
+# Xcode build
+DerivedData/
+build/
+*.xcresult
+
+# Swift Package Manager
+.build/
+Packages/
+Package.pins
+Package.resolved
+
+# CocoaPods
+Pods/
+
+# Carthage
+Carthage/Build/
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Code coverage
+*.profdata
+
+# macOS
+.DS_Store
+
+# Instruments
+*.trace
+
+# Xcode playgrounds
+timeline.xctimeline
+playground.xcworkspace
