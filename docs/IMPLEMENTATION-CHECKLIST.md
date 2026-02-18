@@ -118,7 +118,7 @@ Use this checklist to track progress during implementation. Check off each item 
 ## 🔐 Phase 2: Example 1 - Login (Week 3)
 
 ### Implementation
-- [ ] Create folder: `Examples/01-LoginExample/`
+- [ ] Create folder: `Examples/Login/`
 
 - [ ] **Create files**
   - [ ] LoginExampleContainer.swift
@@ -197,7 +197,7 @@ Use this checklist to track progress during implementation. Check off each item 
   - [ ] CaseIterable, Identifiable
 
 ### Implementation
-- [ ] Create folder: `Examples/02-TaskListExample/`
+- [ ] Create folder: `Examples/TaskList/`
 
 - [ ] **Create files**
   - [ ] TaskListExampleContainer.swift
@@ -279,7 +279,7 @@ Use this checklist to track progress during implementation. Check off each item 
 ## 📋 Phase 4: Example 3 - Task Detail (Week 5)
 
 ### Implementation
-- [ ] Create folder: `Examples/03-TaskDetailExample/`
+- [ ] Create folder: `Examples/TaskDetail/`
 
 - [ ] **Create files**
   - [ ] TaskDetailExampleContainer.swift
@@ -343,7 +343,7 @@ Use this checklist to track progress during implementation. Check off each item 
 ## ⭐️ Phase 5: Example 4 - Custom Control (Week 6)
 
 ### Implementation
-- [ ] Create folder: `Examples/04-CustomControlExample/`
+- [ ] Create folder: `Examples/CustomControl/`
 
 - [ ] **Create files**
   - [ ] CustomControlExampleContainer.swift
@@ -411,7 +411,7 @@ Use this checklist to track progress during implementation. Check off each item 
 ## ⚙️ Phase 6: Example 5 - Settings (Week 7)
 
 ### Implementation
-- [ ] Create folder: `Examples/05-SettingsExample/`
+- [ ] Create folder: `Examples/Settings/`
 
 - [ ] **Create files**
   - [ ] SettingsExampleContainer.swift

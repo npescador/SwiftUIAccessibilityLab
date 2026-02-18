@@ -2,6 +2,7 @@ import Foundation
 import Observation
 
 @Observable
+/// Manages task list state, filtering, and task actions.
 final class TaskListViewModel {
     var tasks: [TaskItem] = []
     var searchText = ""
@@ -13,6 +14,7 @@ final class TaskListViewModel {
         return tasks.filter { $0.title.localizedCaseInsensitiveContains(searchText) }
     }
 
+    /// Loads sample tasks to simulate an async data source.
     func loadTasks() async {
         isLoading = true
         defer { isLoading = false }
@@ -27,17 +29,18 @@ final class TaskListViewModel {
         guard let index = tasks.firstIndex(where: { $0.id == task.id }) else { return }
         tasks[index].isComplete.toggle()
         let status = tasks[index].isComplete ? "completed" : "not completed"
-        AccessibilityHelpers.announce("TaskItem \(status)")
+        AccessibilityHelpers.announce("Task \(status)")
     }
 
     func deleteTask(_ task: TaskItem) {
         tasks.removeAll { $0.id == task.id }
-        AccessibilityHelpers.announce("TaskItem deleted")
+        AccessibilityHelpers.announce("Task deleted")
     }
 
+    /// Appends a new task using the currently selected priority.
     func addTask(title: String, priority: Priority) {
         let newTask = TaskItem(title: title, priority: priority)
         tasks.append(newTask)
-        AccessibilityHelpers.announce("TaskItem added")
+        AccessibilityHelpers.announce("Task added")
     }
 }

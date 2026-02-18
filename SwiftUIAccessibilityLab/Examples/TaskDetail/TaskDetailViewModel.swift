@@ -2,6 +2,7 @@ import Foundation
 import Observation
 
 @Observable
+/// Manages edit state and persistence behavior for task details.
 final class TaskDetailViewModel {
     var task: TaskItem
     var isEditing = false
@@ -18,11 +19,13 @@ final class TaskDetailViewModel {
         resetEditState()
     }
 
+    /// Enters edit mode and syncs temporary edit fields from the task.
     func startEditing() {
         isEditing = true
         resetEditState()
     }
 
+    /// Applies edited values to the task and exits edit mode.
     func saveChanges() {
         task.title = editTitle
         task.details = editDetails.isEmpty ? nil : editDetails
@@ -35,6 +38,7 @@ final class TaskDetailViewModel {
         AccessibilityHelpers.announce("Changes saved")
     }
 
+    /// Discards pending edits and exits edit mode.
     func cancelEditing() {
         isEditing = false
         hasUnsavedChanges = false
@@ -43,12 +47,14 @@ final class TaskDetailViewModel {
         AccessibilityHelpers.announce("Editing canceled")
     }
 
+    /// Toggles the completion state of the current task.
     func toggleCompletion() {
         task.isComplete.toggle()
         let status = task.isComplete ? "completed" : "not completed"
         AccessibilityHelpers.announce("Task marked as \(status)")
     }
 
+    /// Recomputes unsaved changes status using edit fields vs. task values.
     func updateEditState() {
         hasUnsavedChanges = editTitle != task.title
             || editDetails != (task.details ?? "")

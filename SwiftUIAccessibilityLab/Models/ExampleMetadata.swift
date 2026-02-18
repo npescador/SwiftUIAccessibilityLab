@@ -1,5 +1,6 @@
 import Foundation
 
+/// Catalog metadata that describes an example and how it should be presented.
 struct ExampleMetadata: Identifiable, Hashable {
     let id: UUID
     let title: String

@@ -22,6 +22,7 @@ This file provides an overview of all documentation files and their purposes.
 **Technical details?** Read these:
 1. [ARCHITECTURE.md](#architecturemd) - Technical architecture
 2. [ROADMAP.md](#roadmapmd) - Product roadmap
+3. [ENGINEERING-STANDARDS.md](#engineering-standardsmd) - Baseline coding standards
 
 ---
 
@@ -85,6 +86,20 @@ This file provides an overview of all documentation files and their purposes.
 - Code style guidelines
 
 **Read this if:** You need to understand HOW the code is organized
+
+---
+
+### ENGINEERING-STANDARDS.md
+**Purpose:** Baseline coding and architecture rules for contributors  
+**Audience:** Core maintainers and contributors  
+**Key Sections:**
+- Architecture boundaries
+- Concurrency rules
+- SwiftUI and accessibility practices
+- Documentation and testing expectations
+- Project hygiene and branch workflow
+
+**Read this if:** You want to align implementation style with project standards
 
 ---
 
@@ -206,6 +221,7 @@ This file provides an overview of all documentation files and their purposes.
 ### Technical
 - ARCHITECTURE.md
 - EXAMPLES-CATALOG.md
+- ENGINEERING-STANDARDS.md
 
 ### Community
 - README.md

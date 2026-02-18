@@ -46,7 +46,7 @@ SwiftUIAccessibilityLab/
 │
 ├── 🎨 Examples/
 │   │
-│   ├── 01-LoginExample/
+│   ├── Login/
 │   │   ├── LoginExampleContainer.swift         # Wrapper with toggle
 │   │   ├── LoginView.swift                     # Shared UI structure
 │   │   ├── LoginView+Accessible.swift          # ✅ Version
@@ -54,7 +54,7 @@ SwiftUIAccessibilityLab/
 │   │   ├── LoginViewModel.swift                # Business logic
 │   │   └── README.md                           # Example-specific docs
 │   │
-│   ├── 02-TaskListExample/
+│   ├── TaskList/
 │   │   ├── TaskListExampleContainer.swift
 │   │   ├── TaskListView.swift
 │   │   ├── TaskListView+Accessible.swift
@@ -66,9 +66,9 @@ SwiftUIAccessibilityLab/
 │   │   │   └── TaskRow+Inaccessible.swift
 │   │   └── README.md
 │   │
-│   ├── 03-TaskDetailExample/
-│   ├── 04-CustomControlExample/
-│   └── 05-SettingsExample/
+│   ├── TaskDetail/
+│   ├── CustomControl/
+│   └── Settings/
 │
 ├── 🧩 SharedComponents/
 │   ├── ExampleContainer.swift                  # Base container for all examples

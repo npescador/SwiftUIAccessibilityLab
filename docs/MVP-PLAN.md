@@ -182,22 +182,22 @@ SwiftUIAccessibilityLab/
 │   ├── SwiftUIAccessibilityLabApp.swift
 │   └── ContentView.swift (catalog navigation)
 ├── Examples/
-│   ├── 01-LoginExample/
+│   ├── Login/
 │   │   ├── LoginView.swift
 │   │   ├── LoginView+Accessible.swift
 │   │   ├── LoginView+Inaccessible.swift
 │   │   ├── LoginViewModel.swift
 │   │   └── LoginExampleContainer.swift (wrapper with toggle)
-│   ├── 02-TaskListExample/
+│   ├── TaskList/
 │   │   ├── TaskListView.swift
 │   │   ├── TaskListView+Accessible.swift
 │   │   ├── TaskListView+Inaccessible.swift
 │   │   ├── TaskListViewModel.swift
 │   │   ├── TaskRow.swift
 │   │   └── TaskListExampleContainer.swift
-│   ├── 03-TaskDetailExample/
-│   ├── 04-CustomControlExample/
-│   └── 05-SettingsExample/
+│   ├── TaskDetail/
+│   ├── CustomControl/
+│   └── Settings/
 ├── SharedComponents/
 │   ├── ExampleContainer.swift (toggle comparison mode)
 │   ├── CodeSnippetView.swift (show code - future)
