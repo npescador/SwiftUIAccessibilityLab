@@ -18,9 +18,10 @@ Use this checklist to track progress during implementation. Check off each item 
 - [x] **Phase 5: Custom Control example implemented**
 - [x] **Phase 6: Settings example implemented**
 - [x] **ViewModel test suites added for all 5 examples**
+- [x] **Release prep docs added (`docs/RELEASE-PREP.md` and `docs/RELEASE-NOTES-v0.1.0.md`)**
 - [ ] **Manual VoiceOver validation pass pending**
 - [ ] **Full UI test suite expansion pending**
-- [ ] **Final polish artifacts pending (screenshots, release notes, launch assets)**
+- [ ] **Final polish artifacts pending (screenshots, launch assets)**
 
 ---
 
