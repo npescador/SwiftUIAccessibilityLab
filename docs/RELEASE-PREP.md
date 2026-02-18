@@ -11,7 +11,7 @@ This runbook prepares and publishes `v0.1.0` once you are ready to push to GitHu
 - Confirm zero warnings in Xcode
 
 ## 2. Final Documentation Pass
-- Update screenshots in `README.md`
+- Update screenshots in `README.md` and `docs/screenshots/`
 - Confirm links in `README.md` and `CONTRIBUTING.md`
 - Confirm `docs/IMPLEMENTATION-CHECKLIST.md` launch section
 - Review `docs/RELEASE-NOTES-v0.1.0.md`
