@@ -1,8 +1,12 @@
 import SwiftUI
 
+/// Shared wrapper that provides consistent context and variant switching for every example.
 struct ExampleContainer<AccessibleContent: View, InaccessibleContent: View>: View {
+    /// Metadata shown in the example header.
     let metadata: ExampleMetadata
+    /// Builder for the accessible implementation.
     let accessibleView: () -> AccessibleContent
+    /// Builder for the inaccessible implementation.
     let inaccessibleView: () -> InaccessibleContent
 
     @State private var variant: ExampleVariant = .accessible

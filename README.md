@@ -171,11 +171,11 @@ xcodebuild test -scheme SwiftUIAccessibilityLab \
 SwiftUIAccessibilityLab/
 ├── App/                        # App entry point
 ├── Examples/                   # All examples
-│   ├── 01-LoginExample/
-│   ├── 02-TaskListExample/
-│   ├── 03-TaskDetailExample/
-│   ├── 04-CustomControlExample/
-│   └── 05-SettingsExample/
+│   ├── Login/
+│   ├── TaskList/
+│   ├── TaskDetail/
+│   ├── CustomControl/
+│   └── Settings/
 ├── SharedComponents/           # Reusable components
 ├── Models/                     # Data models
 ├── Utils/                      # Helpers and utilities
@@ -392,6 +392,7 @@ If you find this project helpful:
 ## 🗺️ Roadmap
 
 See [ROADMAP.md](docs/ROADMAP.md) for future plans.
+Engineering baseline: [ENGINEERING-STANDARDS.md](docs/ENGINEERING-STANDARDS.md).
 Release preparation checklist: [RELEASE-PREP.md](docs/RELEASE-PREP.md).
 Draft release notes: [RELEASE-NOTES-v0.1.0.md](docs/RELEASE-NOTES-v0.1.0.md).
 VoiceOver manual validation template: [VOICEOVER-AUDIT-v0.1.0.md](docs/VOICEOVER-AUDIT-v0.1.0.md).
