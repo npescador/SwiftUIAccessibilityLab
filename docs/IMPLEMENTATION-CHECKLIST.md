@@ -1,5 +1,8 @@
 # 📋 Implementation Checklist
 
+> Historical planning artifact. Some checklist items reference the pre-refactor structure.
+> For the current codebase, use `README.md` and `docs/ARCHITECTURE.md`.
+
 **SwiftUI Accessibility Lab - MVP Implementation**
 
 Use this checklist to track progress during implementation. Check off each item as you complete it.

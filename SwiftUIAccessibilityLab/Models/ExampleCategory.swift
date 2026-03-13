@@ -14,38 +14,31 @@ enum ExampleCategory: String, CaseIterable, Identifiable, Hashable {
     var icon: String {
         switch self {
         case .basics:
-            return "star.fill"
+            "star.fill"
         case .forms:
-            return "square.and.pencil"
+            "square.and.pencil"
         case .lists:
-            return "list.bullet"
+            "list.bullet"
         case .customControls:
-            return "slider.horizontal.3"
+            "slider.horizontal.3"
         case .navigation:
-            return "arrow.triangle.turn.up.right.circle"
+            "arrow.triangle.turn.up.right.circle"
         case .dataVisualization:
-            return "chart.bar.fill"
+            "chart.bar.fill"
         case .advanced:
-            return "gearshape.2.fill"
+            "gearshape.2.fill"
         }
     }
 
     var color: Color {
         switch self {
-        case .basics:
-            return .blue
-        case .forms:
-            return .green
-        case .lists:
-            return .orange
-        case .customControls:
-            return .purple
-        case .navigation:
-            return .red
-        case .dataVisualization:
-            return .pink
-        case .advanced:
-            return .indigo
+        case .basics: .blue
+        case .forms: .green
+        case .lists: .orange
+        case .customControls: .purple
+        case .navigation: .red
+        case .dataVisualization: .pink
+        case .advanced: .indigo
         }
     }
 }

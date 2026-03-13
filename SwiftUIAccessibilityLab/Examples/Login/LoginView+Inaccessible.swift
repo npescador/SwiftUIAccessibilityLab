@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct LoginView_Inaccessible: View {
-    @State private var viewModel = LoginViewModel()
+    @State private var viewModel = LoginViewModel(announcesErrors: false)
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -14,15 +14,21 @@ struct LoginView_Inaccessible: View {
                 .keyboardType(.emailAddress)
                 .textContentType(.emailAddress)
                 .autocorrectionDisabled()
+                .font(.title3.weight(.medium))
+                .labFieldChrome()
             // Missing: explicit accessibility label and hint.
 
             SecureField("Password", text: $viewModel.password)
                 .textContentType(.password)
+                .font(.title3.weight(.medium))
+                .labFieldChrome()
             // Missing: password visibility state.
 
             Button("Show") {
                 viewModel.togglePasswordVisibility()
             }
+            .font(.body.weight(.semibold))
+            .labSecondaryButtonChrome()
             // Missing: clear label and hint.
 
             Button {
@@ -34,7 +40,8 @@ struct LoginView_Inaccessible: View {
                     Text("Log in")
                 }
             }
-            .buttonStyle(.borderedProminent)
+            .font(.body.weight(.semibold))
+            .labPrimaryButtonChrome(isEnabled: viewModel.isFormValid && !viewModel.isLoading)
             .disabled(!viewModel.isFormValid || viewModel.isLoading)
             // Missing: context-specific label and hint.
 

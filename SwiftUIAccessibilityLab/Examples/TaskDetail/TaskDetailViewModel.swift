@@ -1,9 +1,12 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 /// Manages edit state and persistence behavior for task details.
 final class TaskDetailViewModel {
+    private let announcer: any AccessibilityAnnouncing
+
     var task: TaskItem
     var isEditing = false
     var hasUnsavedChanges = false
@@ -14,8 +17,12 @@ final class TaskDetailViewModel {
     var editDueDate = Date()
     var hasDueDate = false
 
-    init(task: TaskItem = MockData.sampleTasks.first ?? TaskItem(title: "New Task", priority: .medium)) {
+    init(
+        task: TaskItem = MockData.sampleTasks.first ?? TaskItem(title: "New Task", priority: .medium),
+        announcer: any AccessibilityAnnouncing = SystemAccessibilityAnnouncer()
+    ) {
         self.task = task
+        self.announcer = announcer
         resetEditState()
     }
 
@@ -35,7 +42,7 @@ final class TaskDetailViewModel {
         isEditing = false
         hasUnsavedChanges = false
 
-        AccessibilityHelpers.announce("Changes saved")
+        announcer.announce("Changes saved")
     }
 
     /// Discards pending edits and exits edit mode.
@@ -44,14 +51,14 @@ final class TaskDetailViewModel {
         hasUnsavedChanges = false
         resetEditState()
 
-        AccessibilityHelpers.announce("Editing canceled")
+        announcer.announce("Editing canceled")
     }
 
     /// Toggles the completion state of the current task.
     func toggleCompletion() {
         task.isComplete.toggle()
         let status = task.isComplete ? "completed" : "not completed"
-        AccessibilityHelpers.announce("Task marked as \(status)")
+        announcer.announce("Task marked as \(status)")
     }
 
     /// Recomputes unsaved changes status using edit fields vs. task values.

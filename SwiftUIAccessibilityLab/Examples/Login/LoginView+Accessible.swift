@@ -1,13 +1,14 @@
 import SwiftUI
 
 struct LoginView_Accessible: View {
-    @State private var viewModel = LoginViewModel()
+    @State private var viewModel = LoginViewModel(announcesErrors: true)
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             Text("Welcome back")
                 .font(.title2)
                 .fontWeight(.semibold)
+                .foregroundStyle(LabTheme.titleColor)
                 .accessibilityAddTraits(.isHeader)
 
             emailField
@@ -18,21 +19,20 @@ struct LoginView_Accessible: View {
 
             if let errorMessage = viewModel.errorMessage {
                 Text(errorMessage)
-                    .foregroundStyle(.red)
+                    .foregroundStyle(LabTheme.dangerColor)
                     .accessibilityIdentifier("login.error.message")
                     .accessibilityLabel("Error: \(errorMessage)")
-                    .onAppear {
-                        AccessibilityHelpers.announce("Error: \(errorMessage)")
-                    }
             }
 
             Button("Forgot password?") {
             }
             .buttonStyle(.plain)
+            .foregroundStyle(LabTheme.titleColor)
             .accessibilityIdentifier("login.forgot.button")
             .accessibilityHint("Opens password recovery")
         }
         .padding()
+        .tint(LabTheme.titleColor)
     }
 
     private var emailField: some View {
@@ -41,6 +41,8 @@ struct LoginView_Accessible: View {
             .keyboardType(.emailAddress)
             .textContentType(.emailAddress)
             .autocorrectionDisabled()
+            .font(.title3.weight(.medium))
+            .labFieldChrome()
             .accessibilityIdentifier("login.email.field")
             .accessibilityLabel("Email address")
             .accessibilityHint("Enter your email to log in")
@@ -56,6 +58,8 @@ struct LoginView_Accessible: View {
             }
         }
         .textContentType(.password)
+        .font(.title3.weight(.medium))
+        .labFieldChrome()
         .accessibilityIdentifier("login.password.field")
         .accessibilityLabel("Password")
         .accessibilityValue(viewModel.showPassword ? "Visible" : "Hidden")
@@ -66,7 +70,8 @@ struct LoginView_Accessible: View {
         Button(viewModel.showPassword ? "Hide password" : "Show password") {
             viewModel.togglePasswordVisibility()
         }
-        .buttonStyle(.bordered)
+        .font(.body.weight(.semibold))
+        .labSecondaryButtonChrome()
         .accessibilityIdentifier("login.password.visibility.button")
         .accessibilityHint("Toggles password visibility")
     }
@@ -82,7 +87,8 @@ struct LoginView_Accessible: View {
                 Text("Log in")
             }
         }
-        .buttonStyle(.borderedProminent)
+        .font(.body.weight(.semibold))
+        .labPrimaryButtonChrome(isEnabled: viewModel.isFormValid && !viewModel.isLoading)
         .disabled(!viewModel.isFormValid || viewModel.isLoading)
         .accessibilityIdentifier("login.submit.button")
         .accessibilityLabel("Log in")

@@ -4,6 +4,10 @@
 
 This document provides guidelines for contributing to the project. Following these guidelines helps maintain quality and makes the contribution process smooth for everyone.
 
+Current implementation source of truth:
+- `README.md`
+- `docs/ARCHITECTURE.md`
+
 ---
 
 ## 📋 Table of Contents
@@ -67,9 +71,9 @@ What should happen
 What actually happens
 
 **Environment:**
-- iOS: 18.0
-- Xcode: 16.0
-- Device: iPhone 16 Pro Simulator
+- iOS: 18.0+
+- Xcode: 26+
+- Device: iPhone 17 Pro Simulator
 ```
 
 ---
@@ -126,7 +130,7 @@ Photo pickers are common but often inaccessible
 
 ### Prerequisites
 - macOS 15.0+ (Sequoia)
-- Xcode 16.0+
+- Xcode 26+
 - Git
 - GitHub account
 
@@ -163,7 +167,7 @@ Photo pickers are common but often inaccessible
 
 2. **Select scheme:** SwiftUIAccessibilityLab
 
-3. **Select simulator:** iPhone 16 Pro (iOS 18.0)
+3. **Select simulator:** iPhone 17 Pro (iOS 18.0+)
 
 4. **Build:** `Cmd + B`
 

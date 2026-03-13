@@ -3,6 +3,7 @@ import SwiftUI
 struct TaskDetailExampleContainer: View {
     var body: some View {
         ExampleContainer(
+            route: .taskDetail,
             metadata: TaskDetailExampleMetadata.value,
             accessibleView: { TaskDetailView_Accessible() },
             inaccessibleView: { TaskDetailView_Inaccessible() }

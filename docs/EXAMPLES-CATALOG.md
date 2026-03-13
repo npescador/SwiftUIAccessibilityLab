@@ -1,5 +1,8 @@
 # 📚 Examples Catalog
 
+> Educational and planning reference. Some snippets may not match the latest refactor line-by-line.
+> Treat the app source, `README.md`, and `docs/ARCHITECTURE.md` as the implementation source of truth.
+
 **Complete specification of all examples in the SwiftUI Accessibility Lab**
 
 This document provides detailed breakdowns of each example, including what users will learn, accessibility patterns demonstrated, and implementation notes.

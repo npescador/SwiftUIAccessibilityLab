@@ -1,9 +1,13 @@
 import Foundation
 import Observation
+import OSLog
 
+@MainActor
 @Observable
 /// Stores user preference values for the settings example and emits accessibility feedback.
 final class SettingsViewModel {
+    private let announcer: any AccessibilityAnnouncing
+
     var notificationsEnabled = true
     var emailNotifications = false
     var shareAnalytics = false
@@ -11,16 +15,30 @@ final class SettingsViewModel {
 
     var statusMessage: String?
 
+    init(announcer: any AccessibilityAnnouncing = SystemAccessibilityAnnouncer()) {
+        self.announcer = announcer
+    }
+
     /// Simulates cache cleanup and announces completion.
     func clearCache() {
         statusMessage = "Cache cleared"
-        AccessibilityHelpers.announce("Cache cleared")
+        AppLogger.settings.debug("clearCache")
+        announcer.announce("Cache cleared")
     }
 
     /// Simulates account deletion and announces completion.
     func deleteAccount() async {
-        try? await Task.sleep(for: .seconds(1))
+        AppLogger.settings.debug("deleteAccount started")
+        do {
+            try await Task.sleep(for: .seconds(1))
+            try Task.checkCancellation()
+        } catch {
+            AppLogger.settings.debug("deleteAccount cancelled")
+            return
+        }
+
         statusMessage = "Account deleted"
-        AccessibilityHelpers.announce("Account deleted")
+        AppLogger.settings.debug("deleteAccount completed")
+        announcer.announce("Account deleted")
     }
 }

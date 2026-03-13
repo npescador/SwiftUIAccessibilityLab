@@ -1,5 +1,8 @@
 # 📋 MVP Implementation Plan
 
+> Historical planning artifact. Some file names and structures in this document differ from the current implementation.
+> Use `README.md` and `docs/ARCHITECTURE.md` as the source of truth for the live project.
+
 **Project:** SwiftUI Accessibility Lab  
 **Version:** 1.0 (MVP)  
 **Target Date:** TBD  

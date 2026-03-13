@@ -1,4 +1,5 @@
 import SwiftUI
+import OSLog
 
 struct TaskListView_Inaccessible: View {
     @State private var viewModel = TaskListViewModel()
@@ -8,20 +9,32 @@ struct TaskListView_Inaccessible: View {
     var body: some View {
         VStack(spacing: 12) {
             TextField("Search tasks", text: $viewModel.searchText)
-                .textFieldStyle(.roundedBorder)
+                .font(.body.weight(.medium))
+                .labFieldChrome()
             // Missing: accessibility label, value, and hint.
 
             HStack(spacing: 8) {
                 TextField("New task", text: $newTaskTitle)
-                    .textFieldStyle(.roundedBorder)
+                    .font(.body.weight(.medium))
+                    .labFieldChrome()
                 // Missing: accessibility label and hint.
 
-                Picker("Priority", selection: $newTaskPriority) {
+                Menu {
                     ForEach(Priority.allCases) { priority in
-                        Text(priority.rawValue).tag(priority)
+                        Button(priority.rawValue) {
+                            newTaskPriority = priority
+                        }
                     }
+                } label: {
+                    HStack(spacing: 6) {
+                        Text(newTaskPriority.rawValue)
+                        Image(systemName: "chevron.up.chevron.down")
+                            .font(.caption2.weight(.semibold))
+                    }
+                    .font(.body.weight(.medium))
+                    .frame(minWidth: 112, alignment: .leading)
+                    .labFieldChrome()
                 }
-                .pickerStyle(.menu)
                 // Missing: accessibility value.
 
                 Button("Add") {
@@ -29,7 +42,8 @@ struct TaskListView_Inaccessible: View {
                     viewModel.addTask(title: newTaskTitle, priority: newTaskPriority)
                     newTaskTitle = ""
                 }
-                .buttonStyle(.borderedProminent)
+                .font(.body.weight(.semibold))
+                .labPrimaryButtonChrome()
                 // Missing: hint about what the button does.
             }
 
@@ -66,6 +80,12 @@ struct TaskListView_Inaccessible: View {
             }
         }
         .padding(.horizontal)
+        .onAppear {
+            AppLogger.taskList.debug("Inaccessible TaskList appeared")
+        }
+        .onDisappear {
+            AppLogger.taskList.debug("Inaccessible TaskList disappeared")
+        }
         .task {
             await viewModel.loadTasks()
         }

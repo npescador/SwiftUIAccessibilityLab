@@ -13,12 +13,9 @@ enum ExampleDifficulty: Int, CaseIterable, Identifiable, Hashable {
 
     var label: String {
         switch self {
-        case .beginner:
-            return "Beginner"
-        case .intermediate:
-            return "Intermediate"
-        case .advanced:
-            return "Advanced"
+        case .beginner: "Beginner"
+        case .intermediate: "Intermediate"
+        case .advanced: "Advanced"
         }
     }
 }

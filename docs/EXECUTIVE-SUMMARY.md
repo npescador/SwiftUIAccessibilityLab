@@ -1,5 +1,8 @@
 # 📄 Executive Summary
 
+> Planning snapshot from an earlier phase.
+> Current platform baseline, architecture, and testing strategy are documented in `README.md` and `docs/ARCHITECTURE.md`.
+
 **Project:** SwiftUI Accessibility Lab  
 **Status:** Planning Complete - Ready for Implementation  
 **Version:** MVP (v0.1.0)  

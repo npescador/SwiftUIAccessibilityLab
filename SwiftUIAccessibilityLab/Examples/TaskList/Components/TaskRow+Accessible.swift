@@ -8,27 +8,41 @@ struct TaskRow_Accessible: View {
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: task.isComplete ? "checkmark.circle.fill" : "circle")
-                .foregroundStyle(task.isComplete ? .green : .secondary)
+                .font(.title3)
+                .foregroundStyle(task.isComplete ? LabTheme.accent(for: .forms) : LabTheme.tertiaryText)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(task.title)
-                    .font(.headline)
+                    .font(.title3.weight(.semibold))
+                    .foregroundStyle(LabTheme.titleColor)
                 if let dueDate = task.dueDate {
                     Text(dueDate, style: .relative)
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(LabTheme.tertiaryText)
                 }
             }
 
             Spacer()
 
             Text(task.priority.rawValue)
-                .font(.caption)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 4)
-                .background(Color.secondary.opacity(0.15))
-                .clipShape(Capsule())
+                .font(.caption.weight(.semibold))
+                .foregroundStyle(LabTheme.titleColor)
+                .padding(.horizontal, 10)
+                .padding(.vertical, 6)
+                .background(
+                    Capsule(style: .continuous)
+                        .fill(LabTheme.mutedSurface)
+                )
         }
+        .padding(LabTheme.contentPadding)
+        .background(
+            RoundedRectangle(cornerRadius: LabTheme.cornerRadiusMedium, style: .continuous)
+                .fill(LabTheme.surface)
+                .overlay(
+                    RoundedRectangle(cornerRadius: LabTheme.cornerRadiusMedium, style: .continuous)
+                        .stroke(LabTheme.border.opacity(0.7))
+                )
+        )
         .accessibilityElement(children: .combine)
         .accessibilityLabel(labelText)
         .accessibilityValue(task.isComplete ? "Completed" : "Not completed")

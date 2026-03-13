@@ -2,6 +2,7 @@ import SwiftUI
 import Testing
 @testable import SwiftUIAccessibilityLab
 
+@MainActor
 @Suite("CustomControlViewModel")
 struct CustomControlViewModelTests {
     @Test("Rating is clamped between 0 and 5")
