@@ -1,7 +1,9 @@
 # 📚 Examples Catalog
 
-> Educational and planning reference. Some snippets may not match the latest refactor line-by-line.
-> Treat the app source, `README.md`, and `docs/ARCHITECTURE.md` as the implementation source of truth.
+> Educational and planning reference only.
+> Some snippets intentionally describe concepts rather than the latest implementation line-by-line.
+> Do not use this file as the source of truth for architecture, metadata registration, or current ViewModel structure.
+> For implementation, use the app source, `README.md`, `docs/ARCHITECTURE.md`, and `CONTRIBUTING.md`.
 
 **Complete specification of all examples in the SwiftUI Accessibility Lab**
 

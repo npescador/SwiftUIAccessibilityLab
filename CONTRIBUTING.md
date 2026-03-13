@@ -179,7 +179,7 @@ Photo pickers are common but often inaccessible
 
 ## 🆕 Adding a New Example
 
-Follow this step-by-step guide to add a new example:
+Follow this process to add a new example to the current architecture.
 
 ### Step 1: Plan the Example
 
@@ -188,338 +188,133 @@ Follow this step-by-step guide to add a new example:
 - Get feedback from maintainers
 - Wait for approval before implementing
 
-### Step 2: Create File Structure
+### Step 2: Register the Example in the Catalog
+
+`ExampleCatalog` is the single source of truth for:
+- route
+- metadata
+- catalog order
+
+Before building UI, add:
+- a new `ExampleRoute` case
+- a matching `ExampleDefinition` in `ExampleCatalog`
+- the route/container wiring needed to open the example
+
+### Step 3: Create the Feature File Structure
 
 ```bash
 Examples/
-└── [Number]-[Name]Example/
+└── [FeatureName]/
     ├── [Name]ExampleContainer.swift
-    ├── [Name]View.swift                 # If shared structure
     ├── [Name]View+Accessible.swift
     ├── [Name]View+Inaccessible.swift
     ├── [Name]ViewModel.swift
-    ├── Components/                       # If sub-components needed
+    ├── Components/                      # Optional sub-components
     │   ├── SubComponent.swift
     │   ├── SubComponent+Accessible.swift
     │   └── SubComponent+Inaccessible.swift
-    └── README.md
+    └── [Name]Example-README.md
 ```
 
-**Example:** For a "PhotoPicker" example:
-```
-Examples/
-└── 06-PhotoPickerExample/
-    ├── PhotoPickerExampleContainer.swift
-    ├── PhotoPickerView+Accessible.swift
-    ├── PhotoPickerView+Inaccessible.swift
-    ├── PhotoPickerViewModel.swift
-    └── README.md
-```
-
-### Step 3: Implement the Container
+### Step 4: Implement the Container
 
 ```swift
 import SwiftUI
 
 struct PhotoPickerExampleContainer: View {
-    
     var body: some View {
         ExampleContainer(
-            metadata: PhotoPickerMetadata(),
+            route: .photoPicker,
+            metadata: ExampleCatalog.definition(for: .photoPicker).metadata,
             accessibleView: { PhotoPickerView_Accessible() },
             inaccessibleView: { PhotoPickerView_Inaccessible() }
         )
     }
 }
 
-// MARK: - Metadata
-
-private struct PhotoPickerMetadata: ExampleMetadata {
-    let id = UUID()
-    let title = "Photo Picker"
-    let description = "Learn to make photo selection accessible for all users"
-    let difficulty = Difficulty.intermediate
-    let category = ExampleCategory.forms
-    
-    let whatYouLearn = [
-        "PHPickerViewController accessibility",
-        "Image selection with VoiceOver",
-        "Album browsing accessibility",
-        "Selected image feedback"
-    ]
-    
-    let keyPatterns = [
-        ".accessibilityLabel() for images",
-        ".accessibilityValue() for selection state",
-        "Announcements on image selection",
-        "Accessibility actions for quick selection"
-    ]
-    
-    let iosVersion = "iOS 18.0+"
-    let references = [
-        URL(string: "https://developer.apple.com/documentation/photokit")!
-    ]
-}
-
-// MARK: - Preview
-
 #Preview {
     PhotoPickerExampleContainer()
 }
 ```
 
-### Step 4: Implement ViewModel
+### Step 5: Implement the ViewModel
 
 ```swift
-import SwiftUI
+import Foundation
+import Observation
 import PhotosUI
 
+@MainActor
 @Observable
-class PhotoPickerViewModel {
-    
-    // MARK: - State
-    
+final class PhotoPickerViewModel {
+    private let announcer: any AccessibilityAnnouncing
+
     var selectedImage: UIImage?
     var isPickerPresented = false
     var errorMessage: String?
-    
-    // MARK: - Computed
-    
+
+    init(announcer: any AccessibilityAnnouncing = SystemAccessibilityAnnouncer()) {
+        self.announcer = announcer
+    }
+
     var hasSelectedImage: Bool {
         selectedImage != nil
     }
-    
-    // MARK: - Actions
-    
+
     func selectPhoto() {
         isPickerPresented = true
     }
-    
+
     func clearSelection() {
         selectedImage = nil
-        
-        // Announce to VoiceOver
-        AccessibilityHelpers.announce("Photo removed")
+        announcer.announce("Photo removed")
     }
 }
 ```
 
-### Step 5: Implement Accessible Version
+### Step 6: Implement the Two Variants
 
-```swift
-import SwiftUI
-import PhotosUI
-
-struct PhotoPickerView_Accessible: View {
-    
-    @State private var viewModel = PhotoPickerViewModel()
-    
-    var body: some View {
-        VStack(spacing: 20) {
-            
-            // Selected image preview
-            if let image = viewModel.selectedImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 200)
-                    .cornerRadius(12)
-                    // ✅ GOOD: Clear label
-                    .accessibilityLabel("Selected photo")
-                    // ✅ GOOD: Provide action
-                    .accessibilityAction(named: "Remove") {
-                        viewModel.clearSelection()
-                    }
-            } else {
-                placeholderView
-            }
-            
-            // Select photo button
-            Button("Select Photo") {
-                viewModel.selectPhoto()
-            }
-            .buttonStyle(.borderedProminent)
-            // ✅ GOOD: Hint explains result
-            .accessibilityHint("Opens photo picker")
-            
-        }
-        .padding()
-        .navigationTitle("Photo Picker")
-        .sheet(isPresented: $viewModel.isPickerPresented) {
-            // PhotosPicker is accessible by default in iOS 16+
-            Text("Photo Picker Sheet")
-        }
-    }
-    
-    // MARK: - Subviews
-    
-    private var placeholderView: some View {
-        RoundedRectangle(cornerRadius: 12)
-            .fill(Color.gray.opacity(0.3))
-            .frame(height: 200)
-            .overlay {
-                Image(systemName: "photo")
-                    .font(.largeTitle)
-                    .foregroundColor(.gray)
-            }
-            // ✅ GOOD: Placeholder has label
-            .accessibilityLabel("No photo selected")
-            // ✅ GOOD: Hide decorative icon
-            .accessibilityElement(children: .ignore)
-    }
-}
-
-#Preview {
-    PhotoPickerView_Accessible()
-}
-```
-
-### Step 6: Implement Inaccessible Version
-
-```swift
-struct PhotoPickerView_Inaccessible: View {
-    
-    @State private var viewModel = PhotoPickerViewModel()
-    
-    var body: some View {
-        VStack(spacing: 20) {
-            
-            // ❌ BAD: No accessibility for selected image
-            if let image = viewModel.selectedImage {
-                Image(uiImage: image)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(height: 200)
-                    .cornerRadius(12)
-                // Missing: accessibilityLabel
-                // Missing: remove action
-                // Result: User can't identify or remove photo
-            } else {
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(Color.gray.opacity(0.3))
-                    .frame(height: 200)
-                    .overlay {
-                        Image(systemName: "photo")
-                            .font(.largeTitle)
-                    }
-                // ❌ BAD: No label for placeholder
-                // Result: VoiceOver reads nothing
-            }
-            
-            Button("Select Photo") {
-                viewModel.selectPhoto()
-            }
-            .buttonStyle(.borderedProminent)
-            // ❌ BAD: No hint about what happens
-            
-        }
-        .padding()
-        .navigationTitle("Photo Picker")
-        .sheet(isPresented: $viewModel.isPickerPresented) {
-            Text("Photo Picker Sheet")
-        }
-    }
-}
-
-#Preview {
-    PhotoPickerView_Inaccessible()
-}
-```
+Guidelines:
+- keep the accessible and inaccessible versions visually comparable
+- put shared business logic in the ViewModel
+- keep accessibility feedback in the ViewModel via `AccessibilityAnnouncing`
+- reserve `AccessibilityHelpers` for view-level hooks that genuinely need direct UI accessibility APIs
 
 ### Step 7: Add Tests
+
+Required minimum:
+- Swift Testing coverage for the new ViewModel
+- at least one UI smoke or accessibility contract check for the new route
+
+Example outline:
 
 ```swift
 import Testing
 @testable import SwiftUIAccessibilityLab
 
-@Suite("Photo Picker Accessibility Tests")
-struct PhotoPickerAccessibilityTests {
-    
-    @Test("ViewModel starts with no image")
-    func testInitialState() {
-        let viewModel = PhotoPickerViewModel()
-        
-        #expect(viewModel.selectedImage == nil)
-        #expect(viewModel.hasSelectedImage == false)
-    }
-    
-    @Test("Clear selection removes image")
-    func testClearSelection() {
-        let viewModel = PhotoPickerViewModel()
-        viewModel.selectedImage = UIImage()
-        
-        viewModel.clearSelection()
-        
-        #expect(viewModel.selectedImage == nil)
-        #expect(viewModel.hasSelectedImage == false)
-    }
-    
-    @Test("Select photo presents picker")
-    func testSelectPhoto() {
-        let viewModel = PhotoPickerViewModel()
-        
+@Suite("Photo Picker ViewModel")
+struct PhotoPickerViewModelTests {
+    @Test func selectPhotoPresentsPicker() {
+        let viewModel = PhotoPickerViewModel(announcer: TestAccessibilityAnnouncer())
+
         viewModel.selectPhoto()
-        
-        #expect(viewModel.isPickerPresented == true)
+
+        #expect(viewModel.isPickerPresented)
     }
 }
 ```
 
-### Step 8: Add to Catalog
+### Step 8: Add Example Notes
 
-Update `ContentView.swift` to include your example:
+Add or update the feature README so it documents:
+- what users learn
+- which patterns are demonstrated
+- what the inaccessible version gets wrong
 
-```swift
-let examples: [Example] = [
-    // ... existing examples
-    
-    Example(
-        id: UUID(),
-        title: "Photo Picker",
-        category: .forms,
-        difficulty: .intermediate,
-        destination: AnyView(PhotoPickerExampleContainer())
-    )
-]
-```
-
-### Step 9: Create Example README
-
-```markdown
-# Photo Picker Example
-
-## What You'll Learn
-- How to make image selection accessible
-- Accessibility for PHPickerViewController
-- Announcements for selection changes
-- Custom actions for image management
-
-## Accessibility Patterns Used
-1. `.accessibilityLabel()` for selected images
-2. `.accessibilityAction()` for remove action
-3. `.accessibilityElement(children: .ignore)` for placeholders
-4. `AccessibilityHelpers.announce()` for feedback
-
-## Common Mistakes
-❌ No label for selected image
-❌ No way to remove image with VoiceOver
-❌ Placeholder reads decorative icon
-
-## VoiceOver Experience
-### Accessible Version:
-- "Selected photo. Actions available."
-- "Remove. Action."
-- "Select Photo. Button. Hint: Opens photo picker."
-
-### Inaccessible Version:
-- (No label for image)
-- "Select Photo. Button."
-```
-
-### Step 10: Test Thoroughly
+### Step 9: Test Thoroughly
 
 - [ ] Build succeeds with zero warnings
-- [ ] Accessible version works perfectly with VoiceOver
+- [ ] Accessible version works correctly with VoiceOver
 - [ ] Inaccessible version demonstrates clear problems
 - [ ] All tests pass
 - [ ] Code follows style guidelines

@@ -1,45 +1,53 @@
 # 📚 Documentation Index
 
-**SwiftUI Accessibility Lab - Complete Documentation**
+**SwiftUI Accessibility Lab - Documentation Guide**
 
-This file provides an overview of all documentation files and their purposes.
+This file explains which documents describe the current codebase and which ones are historical planning artifacts.
 
 ---
 
 ## 📖 Quick Start
 
 **New to the project?** Read in this order:
-1. [EXECUTIVE-SUMMARY.md](#executive-summarymd) - High-level overview
-2. [PROJECT-VISION.md](#project-visionmd) - Vision and goals
-3. [MVP-PLAN.md](#mvp-planmd) - What we're building
-4. [IMPLEMENTATION-CHECKLIST.md](#implementation-checklistmd) - Start implementing
+1. [README.md](#readmemd) - current product overview and setup
+2. [ARCHITECTURE.md](#architecturemd) - current architecture and testing strategy
+3. [CONTRIBUTING.md](#contributingmd) - contribution workflow for the live codebase
+4. [ENGINEERING-STANDARDS.md](#engineering-standardsmd) - implementation rules
 
 **Contributing?** Read these:
 1. [README.md](#readmemd) - Project README
 2. [CONTRIBUTING.md](#contributingmd) - Contribution guidelines
-3. [EXAMPLES-CATALOG.md](#examples-catalogmd) - Example specifications
+3. [ARCHITECTURE.md](#architecturemd) - current extension model
+4. [EXAMPLES-CATALOG.md](#examples-catalogmd) - educational reference only
 
 **Technical details?** Read these:
 1. [ARCHITECTURE.md](#architecturemd) - Technical architecture
-2. [ROADMAP.md](#roadmapmd) - Product roadmap
-3. [ENGINEERING-STANDARDS.md](#engineering-standardsmd) - Baseline coding standards
+2. [ENGINEERING-STANDARDS.md](#engineering-standardsmd) - Baseline coding standards
+3. [ROADMAP.md](#roadmapmd) - Future direction and historical roadmap context
+
+**Historical planning context?** Read these:
+1. [EXECUTIVE-SUMMARY.md](#executive-summarymd)
+2. [PROJECT-VISION.md](#project-visionmd)
+3. [MVP-PLAN.md](#mvp-planmd)
+4. [IMPLEMENTATION-CHECKLIST.md](#implementation-checklistmd)
+5. [ROADMAP.md](#roadmapmd)
 
 ---
 
 ## 📄 Document Descriptions
 
 ### EXECUTIVE-SUMMARY.md
-**Purpose:** High-level project overview for quick understanding  
+**Purpose:** Historical high-level planning snapshot  
 **Audience:** Everyone (especially project leads, stakeholders)  
-**Size:** ~9 KB  
+**Status:** Historical, not implementation source of truth  
 **Key Sections:**
 - Project overview & problem statement
 - MVP scope & deliverables
 - Timeline & success metrics
 - Risk mitigation
-- Ready-to-implement status
+- Original planning assumptions
 
-**Read this if:** You want a 5-minute overview of the entire project
+**Read this if:** You want context on the original planning phase
 
 ---
 
@@ -59,9 +67,9 @@ This file provides an overview of all documentation files and their purposes.
 ---
 
 ### MVP-PLAN.md
-**Purpose:** Detailed MVP scope and implementation approach  
-**Audience:** Developers implementing the project  
-**Size:** ~12 KB  
+**Purpose:** Historical MVP scope and implementation plan  
+**Audience:** Contributors who want project history  
+**Status:** Historical, not the current implementation guide  
 **Key Sections:**
 - 5 core examples detailed
 - Technical architecture summary
@@ -69,7 +77,7 @@ This file provides an overview of all documentation files and their purposes.
 - Testing strategy
 - Definition of done
 
-**Read this if:** You're implementing the MVP and need the blueprint
+**Read this if:** You want to compare the shipped app against the original plan
 
 ---
 
@@ -106,7 +114,7 @@ This file provides an overview of all documentation files and their purposes.
 ### ROADMAP.md
 **Purpose:** Product roadmap from MVP to v1.0 and beyond  
 **Audience:** Contributors, community, stakeholders  
-**Size:** ~12 KB  
+**Status:** Mix of historical timeline assumptions and future direction  
 **Key Sections:**
 - v0.1.0 (MVP) - 5 examples
 - v0.2.0 - Community features
@@ -120,9 +128,9 @@ This file provides an overview of all documentation files and their purposes.
 ---
 
 ### EXAMPLES-CATALOG.md
-**Purpose:** Detailed specification of all examples  
-**Audience:** Developers implementing examples  
-**Size:** ~23 KB  
+**Purpose:** Educational reference for the examples and future ideas  
+**Audience:** Developers and readers learning the example set  
+**Status:** Descriptive reference; snippets may lag behind refactors  
 **Key Sections:**
 - Complete breakdown of 5 MVP examples
 - Accessibility patterns per example
@@ -132,7 +140,7 @@ This file provides an overview of all documentation files and their purposes.
 - VoiceOver experience descriptions
 - Future examples overview (v0.2+)
 
-**Read this if:** You're implementing a specific example
+**Read this if:** You want teaching context for an example, not authoritative implementation details
 
 ---
 
@@ -174,9 +182,9 @@ This file provides an overview of all documentation files and their purposes.
 ---
 
 ### IMPLEMENTATION-CHECKLIST.md
-**Purpose:** Detailed checklist to track MVP implementation  
-**Audience:** Developer(s) implementing the project  
-**Size:** ~15 KB  
+**Purpose:** Historical checklist from the MVP implementation phase  
+**Audience:** Contributors interested in project history  
+**Status:** Historical, not an active execution tracker  
 **Key Sections:**
 - Pre-implementation checklist
 - Phase 1: Project setup
@@ -186,7 +194,7 @@ This file provides an overview of all documentation files and their purposes.
 - Success metrics tracking
 - Notes section
 
-**Read this if:** You're actively implementing and need to track progress
+**Read this if:** You want to see the original implementation checklist and remaining manual QA notes
 
 ---
 
@@ -197,38 +205,26 @@ This file provides an overview of all documentation files and their purposes.
 
 ---
 
-## 📊 Documentation Statistics
-
-| Metric | Value |
-|--------|-------|
-| Total files | 9 |
-| Total size | ~125 KB |
-| Total words | ~25,000 |
-| Average read time | ~90 minutes (all docs) |
-| Code examples | 50+ |
-| Sections | 100+ |
-
----
-
 ## 🗂️ Documentation by Category
 
-### Planning & Vision
+### Current Source of Truth
+- README.md
+- ARCHITECTURE.md
+- CONTRIBUTING.md
+- ENGINEERING-STANDARDS.md
+
+### Historical Planning & Tracking
 - EXECUTIVE-SUMMARY.md
 - PROJECT-VISION.md
 - MVP-PLAN.md
 - ROADMAP.md
-
-### Technical
-- ARCHITECTURE.md
-- EXAMPLES-CATALOG.md
-- ENGINEERING-STANDARDS.md
-
-### Community
-- README.md
-- CONTRIBUTING.md
-
-### Tracking
 - IMPLEMENTATION-CHECKLIST.md
+
+### Reference & Supporting Material
+- EXAMPLES-CATALOG.md
+- RELEASE-NOTES-v0.1.0.md
+- RELEASE-PREP.md
+- VOICEOVER-AUDIT-v0.1.0.md
 - INDEX.md (this file)
 
 ---
@@ -236,28 +232,30 @@ This file provides an overview of all documentation files and their purposes.
 ## 🎯 Reading Paths
 
 ### Path 1: "I want to understand the project"
-1. EXECUTIVE-SUMMARY.md (5 min)
-2. README.md (10 min)
-3. PROJECT-VISION.md (15 min)
+1. README.md (10 min)
+2. ARCHITECTURE.md (15 min)
+3. PROJECT-VISION.md (optional historical context)
 
-**Total:** 30 minutes
+**Total:** 25 minutes
 
 ---
 
 ### Path 2: "I want to implement the MVP"
-1. EXECUTIVE-SUMMARY.md (5 min)
-2. MVP-PLAN.md (20 min)
-3. ARCHITECTURE.md (30 min)
-4. EXAMPLES-CATALOG.md (30 min)
-5. IMPLEMENTATION-CHECKLIST.md (10 min)
+1. README.md (10 min)
+2. ARCHITECTURE.md (15 min)
+3. CONTRIBUTING.md (20 min)
+4. ENGINEERING-STANDARDS.md (10 min)
+5. EXAMPLES-CATALOG.md (optional teaching context)
 
-**Total:** 95 minutes, then start coding
+**Total:** 55 minutes, then start coding
 
 ---
 
 ### Path 3: "I want to contribute"
 1. README.md (10 min)
 2. CONTRIBUTING.md (20 min)
+3. ARCHITECTURE.md (15 min)
+4. ENGINEERING-STANDARDS.md (10 min)
 3. ARCHITECTURE.md (30 min)
 4. EXAMPLES-CATALOG.md (15 min, skim)
 

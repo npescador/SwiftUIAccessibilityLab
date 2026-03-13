@@ -1,7 +1,7 @@
 # 🗺️ Product Roadmap
 
 **Project:** SwiftUI Accessibility Lab  
-**Status:** Planning Phase  
+**Status:** Historical roadmap plus future direction  
 **Last Updated:** 2026-02-16
 
 ---
@@ -14,23 +14,16 @@ Build the **definitive open-source resource** for iOS developers to learn, pract
 
 ## 📍 Current Status
 
-**Phase:** Pre-Development (Documentation & Planning)
+**Phase:** Implemented MVP baseline with historical roadmap retained
 
-**Completed:**
-- ✅ Project vision defined
-- ✅ MVP scope documented
-- ✅ Technical architecture designed
-- ✅ 5 core examples specified
-- ✅ Testing strategy defined
+**Current reality:**
+- ✅ Xcode project exists
+- ✅ 5 MVP examples are implemented
+- ✅ Shared catalog and navigation are implemented
+- ✅ Swift Testing and UI smoke coverage exist
+- 🔄 Manual VoiceOver audit and broader runtime validation remain ongoing
 
-**In Progress:**
-- 🔄 Detailed documentation
-- 🔄 Contribution guidelines
-- 🔄 Example catalog
-
-**Blocked:**
-- ⏸️ Xcode project creation (waiting on documentation)
-- ⏸️ Implementation (waiting on planning approval)
+Use `README.md` and `docs/ARCHITECTURE.md` for the current implemented state. Treat the timeline below as roadmap context rather than a live execution plan.
 
 ---
 
