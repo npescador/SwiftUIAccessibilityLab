@@ -4,7 +4,7 @@
 > Current platform baseline, architecture, and testing strategy are documented in `README.md` and `docs/ARCHITECTURE.md`.
 
 **Project:** SwiftUI Accessibility Lab  
-**Status:** Planning Complete - Ready for Implementation  
+**Status:** Historical planning snapshot  
 **Version:** MVP (v0.1.0)  
 **Date:** 2026-02-16
 
@@ -58,7 +58,7 @@
 ### Code
 - ✅ Xcode project (iOS 18.0+, Swift 6)
 - ✅ 5 complete examples
-- ✅ 31+ tests (all passing)
+- ✅ 31+ tests planned for MVP
 - ✅ Zero warnings policy
 - ✅ Reusable components
 
@@ -77,7 +77,7 @@
 - ✅ Public GitHub repository
 - ✅ Issue templates
 - ✅ PR template
-- ✅ GitHub Discussions enabled
+- ✅ Public GitHub repository
 
 ---
 
@@ -103,8 +103,8 @@
 - Modern SwiftUI accessibility APIs
 
 ### Testing
-- Unit testing accessibility properties
-- VoiceOver simulation
+- Unit testing accessibility-related behavior
+- UI smoke coverage
 - Accessibility Inspector usage
 
 ---
@@ -160,7 +160,7 @@ SwiftUIAccessibilityLab/
 
 ### Launch Goals (v0.1.0)
 - ✅ 5 examples working perfectly
-- ✅ 31+ tests, all passing
+- ✅ 31+ tests planned and largely implemented for the MVP baseline
 - ✅ Zero compiler warnings
 - ✅ 10+ GitHub stars (Week 1)
 - ✅ 0 accessibility bugs
