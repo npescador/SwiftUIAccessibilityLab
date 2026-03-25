@@ -1,7 +1,10 @@
 import XCTest
 
 final class SwiftUIAccessibilityLabUITests: XCTestCase {
-    private let routes = ["login", "taskList", "taskDetail", "customControl", "settings"]
+    private let routes = [
+        "login", "taskList", "taskDetail", "customControl", "settings",
+        "quantityControl", "dynamicType", "dataChart", "reduceMotion", "customRotor"
+    ]
 
     override func setUpWithError() throws {
         continueAfterFailure = false
