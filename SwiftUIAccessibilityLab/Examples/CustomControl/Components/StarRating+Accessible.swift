@@ -24,12 +24,10 @@ struct StarRating_Accessible: View {
             case .increment:
                 if rating < maxRating {
                     rating += 1
-                    announceRating()
                 }
             case .decrement:
                 if rating > 0 {
                     rating -= 1
-                    announceRating()
                 }
             @unknown default:
                 break
