@@ -217,6 +217,29 @@ enum ExampleCatalog {
                     URL(string: "https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion")!
                 ]
             )
+        ),
+        ExampleDefinition(
+            route: .customRotor,
+            metadata: ExampleMetadata(
+                title: "Custom Rotor",
+                description: "An article reader where VoiceOver can jump between sections — once headings and a rotor are added.",
+                difficulty: .advanced,
+                category: .navigation,
+                whatYouLearn: [
+                    "Add .isHeader trait and .accessibilityHeading level to section titles",
+                    "Build a custom rotor with AccessibilityRotorEntry",
+                    "Use .id() to anchor rotor entries to specific views"
+                ],
+                keyPatterns: [
+                    ".accessibilityAddTraits(.isHeader)",
+                    ".accessibilityHeading(.h1 / .h2)",
+                    ".accessibilityRotor with AccessibilityRotorEntry"
+                ],
+                iosVersion: "iOS 18.0+",
+                references: [
+                    URL(string: "https://developer.apple.com/documentation/swiftui/view/accessibilityrotor(_:entries:entrylabel:)")!
+                ]
+            )
         )
     ]
 
