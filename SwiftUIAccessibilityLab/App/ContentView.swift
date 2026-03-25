@@ -279,6 +279,8 @@ private struct ExampleRouteView: View {
             SettingsExampleContainer()
         case .quantityControl:
             QuantityControlExampleContainer()
+        case .dynamicType:
+            DynamicTypeExampleContainer()
         }
     }
 }
