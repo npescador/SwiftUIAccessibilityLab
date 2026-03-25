@@ -2,6 +2,7 @@ import SwiftUI
 
 struct LoginView_Accessible: View {
     @State private var viewModel = LoginViewModel(announcesErrors: true)
+    @AccessibilityFocusState private var isErrorFocused: Bool
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -22,6 +23,7 @@ struct LoginView_Accessible: View {
                     .foregroundStyle(LabTheme.dangerColor)
                     .accessibilityIdentifier("login.error.message")
                     .accessibilityLabel("Error: \(errorMessage)")
+                    .accessibilityFocused($isErrorFocused)
             }
 
             Button("Forgot password?") {
@@ -33,6 +35,11 @@ struct LoginView_Accessible: View {
         }
         .padding()
         .tint(LabTheme.titleColor)
+        .onChange(of: viewModel.errorMessage) { _, newValue in
+            if newValue != nil {
+                isErrorFocused = true
+            }
+        }
     }
 
     private var emailField: some View {

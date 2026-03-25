@@ -1,4 +1,5 @@
-import UIKit
+import Accessibility
+import Foundation
 
 protocol AccessibilityAnnouncing {
     @MainActor
@@ -8,6 +9,8 @@ protocol AccessibilityAnnouncing {
 struct SystemAccessibilityAnnouncer: AccessibilityAnnouncing {
     @MainActor
     func announce(_ message: String) {
-        UIAccessibility.post(notification: .announcement, argument: message)
+        var announcement = AttributedString(message)
+        announcement.accessibilitySpeechAnnouncementPriority = .high
+        AccessibilityNotification.Announcement(announcement).post()
     }
 }
