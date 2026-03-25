@@ -171,6 +171,30 @@ enum ExampleCatalog {
                 ]
             )
         )
+        ,
+        ExampleDefinition(
+            route: .dataChart,
+            metadata: ExampleMetadata(
+                title: "Data Chart",
+                description: "A weekly step-count chart that's invisible to VoiceOver until fixed with per-mark labels.",
+                difficulty: .intermediate,
+                category: .dataVisualization,
+                whatYouLearn: [
+                    "Add per-mark labels and values to Swift Charts",
+                    "Set a chart-level accessibility label to enable Audio Graph",
+                    "Hide decorative chart elements from VoiceOver"
+                ],
+                keyPatterns: [
+                    ".accessibilityLabel / .accessibilityValue on BarMark",
+                    ".chartAccessibilityLabel",
+                    ".accessibilityHidden(true) on reference lines"
+                ],
+                iosVersion: "iOS 18.0+",
+                references: [
+                    URL(string: "https://developer.apple.com/documentation/charts")!
+                ]
+            )
+        )
     ]
 
     static func definition(for route: ExampleRoute) -> ExampleDefinition {

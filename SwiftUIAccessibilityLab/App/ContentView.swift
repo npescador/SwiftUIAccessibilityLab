@@ -281,6 +281,8 @@ private struct ExampleRouteView: View {
             QuantityControlExampleContainer()
         case .dynamicType:
             DynamicTypeExampleContainer()
+        case .dataChart:
+            DataChartExampleContainer()
         }
     }
 }
