@@ -194,6 +194,29 @@ enum ExampleCatalog {
                     URL(string: "https://developer.apple.com/documentation/charts")!
                 ]
             )
+        ),
+        ExampleDefinition(
+            route: .reduceMotion,
+            metadata: ExampleMetadata(
+                title: "Reduce Motion",
+                description: "A goals checklist that triggers animations — with and without Reduce Motion support.",
+                difficulty: .intermediate,
+                category: .advanced,
+                whatYouLearn: [
+                    "Read accessibilityReduceMotion from the environment",
+                    "Swap spring animations for simple fades when Reduce Motion is on",
+                    "Use .sensoryFeedback as a non-motion feedback channel"
+                ],
+                keyPatterns: [
+                    "@Environment(\\.accessibilityReduceMotion)",
+                    ".animation(reduceMotion ? .easeInOut : .spring, value:)",
+                    ".transition with conditional opacity vs scale"
+                ],
+                iosVersion: "iOS 18.0+",
+                references: [
+                    URL(string: "https://developer.apple.com/documentation/swiftui/environmentvalues/accessibilityreducemotion")!
+                ]
+            )
         )
     ]
 

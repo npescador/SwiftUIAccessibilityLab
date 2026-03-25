@@ -283,6 +283,8 @@ private struct ExampleRouteView: View {
             DynamicTypeExampleContainer()
         case .dataChart:
             DataChartExampleContainer()
+        case .reduceMotion:
+            ReduceMotionExampleContainer()
         }
     }
 }
