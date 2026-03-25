@@ -147,6 +147,30 @@ enum ExampleCatalog {
                 ]
             )
         )
+        ,
+        ExampleDefinition(
+            route: .dynamicType,
+            metadata: ExampleMetadata(
+                title: "Dynamic Type",
+                description: "Article cards that adapt — or fail to adapt — to the user's text size preference.",
+                difficulty: .intermediate,
+                category: .basics,
+                whatYouLearn: [
+                    "Use text styles instead of fixed font sizes",
+                    "Scale non-text elements with @ScaledMetric",
+                    "Adapt layout at accessibility sizes with ViewThatFits"
+                ],
+                keyPatterns: [
+                    "Font text styles (.headline, .body, .caption)",
+                    "@ScaledMetric for icons and spacing",
+                    "ViewThatFits for adaptive layout"
+                ],
+                iosVersion: "iOS 18.0+",
+                references: [
+                    URL(string: "https://developer.apple.com/documentation/swiftui/scaledmetric")!
+                ]
+            )
+        )
     ]
 
     static func definition(for route: ExampleRoute) -> ExampleDefinition {

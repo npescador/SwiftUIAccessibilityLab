@@ -7,6 +7,7 @@ enum ExampleRoute: String, CaseIterable, Identifiable, Hashable {
     case customControl
     case settings
     case quantityControl
+    case dynamicType
 
     var id: String { rawValue }
 }
