@@ -285,6 +285,8 @@ private struct ExampleRouteView: View {
             DataChartExampleContainer()
         case .reduceMotion:
             ReduceMotionExampleContainer()
+        case .customRotor:
+            CustomRotorExampleContainer()
         }
     }
 }
