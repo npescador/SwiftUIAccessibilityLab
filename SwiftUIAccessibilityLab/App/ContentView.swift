@@ -277,6 +277,8 @@ private struct ExampleRouteView: View {
             CustomControlExampleContainer()
         case .settings:
             SettingsExampleContainer()
+        case .quantityControl:
+            QuantityControlExampleContainer()
         }
     }
 }
