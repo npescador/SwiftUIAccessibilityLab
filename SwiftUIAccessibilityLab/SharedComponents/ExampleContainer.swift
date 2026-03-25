@@ -102,7 +102,8 @@ struct ExampleContainer<AccessibleContent: View, InaccessibleContent: View>: Vie
 
             VStack(alignment: .leading, spacing: 6) {
                 Text(metadata.title)
-                    .font(.system(size: isCompactHeight ? 22 : 24, weight: .bold, design: .rounded))
+                    .font(isCompactHeight ? .title3.weight(.bold) : .title2.weight(.bold))
+                    .fontDesign(.rounded)
                     .foregroundStyle(LabTheme.titleColor)
 
                 Text(metadata.description)
@@ -155,6 +156,7 @@ struct ExampleContainer<AccessibleContent: View, InaccessibleContent: View>: Vie
                         .font(.system(size: 7))
                         .foregroundStyle(LabTheme.accent(for: metadata.category))
                         .padding(.top, 6)
+                        .accessibilityHidden(true)
 
                     Text(item)
                         .font(.subheadline)
@@ -193,7 +195,8 @@ struct ExampleContainer<AccessibleContent: View, InaccessibleContent: View>: Vie
 
                     VStack(alignment: .leading, spacing: 10) {
                         Text(metadata.title)
-                            .font(.system(size: 28, weight: .bold, design: .rounded))
+                            .font(.title.weight(.bold))
+                            .fontDesign(.rounded)
                             .foregroundStyle(LabTheme.titleColor)
 
                         Text(metadata.description)

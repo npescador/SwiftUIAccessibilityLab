@@ -57,29 +57,30 @@ struct CustomControlView_Accessible: View {
     }
 
     private func colorSwatch(_ color: Color, label: String) -> some View {
-        Circle()
-            .fill(color)
-            .frame(width: 44, height: 44)
-            .overlay {
-                Circle()
-                    .stroke(LabTheme.surface, lineWidth: 2)
-                    .padding(1)
-            }
-            .overlay {
-                if viewModel.selectedColor == color {
-                    Image(systemName: "checkmark")
-                        .foregroundStyle(.white)
+        Button {
+            viewModel.selectColor(color)
+            AccessibilityHelpers.announce("\(label) selected")
+        } label: {
+            Circle()
+                .fill(color)
+                .frame(width: 44, height: 44)
+                .overlay {
+                    Circle()
+                        .stroke(LabTheme.surface, lineWidth: 2)
+                        .padding(1)
                 }
-            }
-            .onTapGesture {
-                viewModel.selectColor(color)
-                AccessibilityHelpers.announce("\(label) selected")
-            }
-            .shadow(color: LabTheme.shadow, radius: 4, x: 0, y: 2)
-            .accessibilityIdentifier("customcontrol.color.\(label.lowercased())")
-            .accessibilityLabel(label)
-            .accessibilityAddTraits(viewModel.selectedColor == color ? .isSelected : [])
-            .accessibilityHint("Double-tap to select")
+                .overlay {
+                    if viewModel.selectedColor == color {
+                        Image(systemName: "checkmark")
+                            .foregroundStyle(.white)
+                    }
+                }
+                .shadow(color: LabTheme.shadow, radius: 4, x: 0, y: 2)
+        }
+        .buttonStyle(.plain)
+        .accessibilityIdentifier("customcontrol.color.\(label.lowercased())")
+        .accessibilityLabel(label)
+        .accessibilityAddTraits(viewModel.selectedColor == color ? .isSelected : [])
     }
 }
 

@@ -38,8 +38,6 @@ struct ComparisonToggle: View {
                     )
             )
             .accessibilityIdentifier("comparison.toggle")
-            .accessibilityLabel("Example version")
-            .accessibilityHint("Switch between accessible and inaccessible versions")
         }
     }
 

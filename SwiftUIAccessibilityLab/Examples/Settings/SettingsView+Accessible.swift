@@ -38,7 +38,6 @@ struct SettingsView_Accessible: View {
                     .accessibilityIdentifier("settings.notifications.toggle")
                     .accessibilityLabel("Enable notifications")
                     .accessibilityValue(viewModel.notificationsEnabled ? "On" : "Off")
-                    .accessibilityHint("Double-tap to toggle")
 
                 Toggle("Email notifications", isOn: $viewModel.emailNotifications)
                     .toggleStyle(.switch)
@@ -46,7 +45,6 @@ struct SettingsView_Accessible: View {
                     .accessibilityIdentifier("settings.emailnotifications.toggle")
                     .accessibilityLabel("Email notifications")
                     .accessibilityValue(viewModel.emailNotifications ? "On" : "Off")
-                    .accessibilityHint("Double-tap to toggle")
             }
         }
     }
@@ -90,7 +88,6 @@ struct SettingsView_Accessible: View {
                     .accessibilityIdentifier("settings.analytics.toggle")
                     .accessibilityLabel("Share analytics")
                     .accessibilityValue(viewModel.shareAnalytics ? "On" : "Off")
-                    .accessibilityHint("Double-tap to toggle")
             }
         }
     }

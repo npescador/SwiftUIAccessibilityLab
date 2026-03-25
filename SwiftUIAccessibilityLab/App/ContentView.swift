@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     private let examples = ExampleCatalog.definitions
+    @Environment(\.dynamicTypeSize) private var dynamicTypeSize
 
     var body: some View {
         NavigationStack {
@@ -48,8 +49,8 @@ struct ContentView: View {
     private var heroSection: some View {
         VStack(alignment: .leading, spacing: LabTheme.spacingM) {
             Text("Learn accessibility through comparison.")
-                .font(.system(size: 30, weight: .bold, design: .rounded))
-                .lineSpacing(-2)
+                .font(.title.weight(.bold))
+                .fontDesign(.rounded)
                 .foregroundStyle(LabTheme.titleColor)
                 .fixedSize(horizontal: false, vertical: true)
 
@@ -94,10 +95,10 @@ struct ContentView: View {
             )
 
             LazyVGrid(
-                columns: [
-                    GridItem(.flexible(), spacing: 14),
-                    GridItem(.flexible(), spacing: 14)
-                ],
+                columns: Array(
+                    repeating: GridItem(.flexible(), spacing: 14),
+                    count: dynamicTypeSize.isAccessibilitySize ? 1 : 2
+                ),
                 spacing: 14
             ) {
                 ForEach(categories, id: \.self) { category in
@@ -187,8 +188,10 @@ private struct ExampleCard: View {
                     Image(systemName: example.metadata.category.icon)
                         .font(.title3.weight(.semibold))
                         .foregroundStyle(LabTheme.accent(for: example.metadata.category))
+                        .accessibilityHidden(true)
                 }
                 .frame(width: 52, height: 52)
+                .accessibilityHidden(true)
 
                 VStack(alignment: .leading, spacing: LabTheme.spacingXS) {
                     HStack(alignment: .center, spacing: 8) {
@@ -201,6 +204,7 @@ private struct ExampleCard: View {
                         Image(systemName: "arrow.up.right")
                             .font(.caption.weight(.bold))
                             .foregroundStyle(LabTheme.bodyColor)
+                            .accessibilityHidden(true)
                     }
 
                     Text(example.metadata.description)
