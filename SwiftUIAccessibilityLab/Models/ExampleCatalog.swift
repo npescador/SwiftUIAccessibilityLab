@@ -123,6 +123,29 @@ enum ExampleCatalog {
                     URL(string: "https://developer.apple.com/documentation/swiftui/form")!
                 ]
             )
+        ),
+        ExampleDefinition(
+            route: .quantityControl,
+            metadata: ExampleMetadata(
+                title: "Quantity Control",
+                description: "Custom +/− stepper UI made accessible with accessibilityRepresentation.",
+                difficulty: .intermediate,
+                category: .customControls,
+                whatYouLearn: [
+                    "Map custom UI to a native Stepper for VoiceOver",
+                    "Keep visual design while exposing standard interaction",
+                    "Why onTapGesture blocks VoiceOver"
+                ],
+                keyPatterns: [
+                    "accessibilityRepresentation",
+                    "Stepper binding from custom control",
+                    "onTapGesture vs Button"
+                ],
+                iosVersion: "iOS 18.0+",
+                references: [
+                    URL(string: "https://developer.apple.com/documentation/swiftui/view/accessibilityrepresentation(representation:)")!
+                ]
+            )
         )
     ]
 
